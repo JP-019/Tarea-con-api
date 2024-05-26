@@ -13,11 +13,13 @@ class give {
   }
 
   Object? toJson() {
+    // ignore: unused_element
     Map<String, dynamic> toJson() {
       return {
         'strDrink': name,
         'strDrinkThumb': url,
       };
     }
+    return null;
   }
 }

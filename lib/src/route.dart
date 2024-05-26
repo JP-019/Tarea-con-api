@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:app1/model/give.dart';
+import 'package:app1/page/Error/404.dart';
 import 'package:app1/page/detalles.dart';
 import 'package:app1/page/drink.dart';
 import 'package:app1/page/home.dart';
@@ -37,7 +38,7 @@ final GoRouter router = GoRouter(
               final give drink = give.fromJson(jsonDecode(params['drink']!));
               return DrinkDetail(drink: drink);
             } else {
-              return Container(); // O cualquier otro widget apropiado
+              return const Error404(); // O cualquier otro widget apropiado
             }
           },
         ),

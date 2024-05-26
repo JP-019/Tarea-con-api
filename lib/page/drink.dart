@@ -8,12 +8,14 @@ import '../model/give.dart';
 
 class BebidasLink extends StatefulWidget {
   const BebidasLink({Key? key}) : super(key: key);
-
+//actualizacion
   @override
   _BebidasLinkState createState() => _BebidasLinkState();
 }
 
 class _BebidasLinkState extends State<BebidasLink> {
+  int _currentIndex = 0;
+
   List<give> _drinks = [];
   late StreamSubscription
       _subscription; // Mantener una referencia a la suscripción
@@ -81,6 +83,47 @@ class _BebidasLinkState extends State<BebidasLink> {
             ),
           );
         },
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+            switch (index) {
+              case 0:
+                context.go('/');
+                break;
+              case 1:
+                context.go(
+                    '/list'); // Cambia '/list' por la ruta de tu lista de bebidas
+                break;
+              case 2:
+                context.go(
+                    '/search'); // Cambia '/search' por la ruta de tu página de búsqueda
+                break;
+            }
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            activeIcon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Colors.black,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            activeIcon: Icon(Icons.list),
+            label: 'List',
+            backgroundColor: Colors.black,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            activeIcon: Icon(Icons.search),
+            label: 'Search',
+            backgroundColor: Colors.black,
+          ),
+        ],
       ),
     );
   }
